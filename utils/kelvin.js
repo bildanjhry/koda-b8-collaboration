@@ -9,4 +9,4 @@ module.exports = {
 
 function kelvinToRankine(value) {
   return value * (9/5)
-}
+};
