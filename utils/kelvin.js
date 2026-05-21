@@ -3,6 +3,10 @@
 // TODO: Uncomment after implemented
 module.exports = {
   // kelvinToCelsius,
-  // kelvinToRankine,
+  kelvinToRankine,
   // kelvinToFahrenheit,
 };
+
+function kelvinToRankine(value) {
+  return value * (9/5)
+}
