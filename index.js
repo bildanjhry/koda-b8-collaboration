@@ -1,4 +1,5 @@
 const { input, closeInput } = require("./utils/inputData.js");
+const { validateNumber } = require("./utils/validator.js")
 
 const {
   celsiusToKelvin,
@@ -27,16 +28,14 @@ const {
 // TODO: Do user input and calculation.
 
 async function main() {
+  try {
   const nilai = await input("Masukkan suhu : ");
+  const value = await Number(nilai);
   const from = await input("Dari satuan asal (C/K/R/F) : ");
-
-  const value = Number(nilai);
   const unit = from.toUpperCase();
-
-  if (isNaN(value)) {
-    closeInput("Input harus berupa angka");
-    return;
-  }
+  
+  // Calling validator package to do input validation
+  validateNumber(value)
 
   console.log(`\n---- Hasil konversi---- `);
 
@@ -66,5 +65,10 @@ async function main() {
   }
 
   closeInput(`\nProgram selesai.`);
+  } catch (err){
+    console.log(err)
+    console.log('-----------------\n')
+    main()
+  }
 }
 main();
