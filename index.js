@@ -31,11 +31,12 @@ async function main() {
   try {
   const nilai = await input("Masukkan suhu : ");
   const value = await Number(nilai);
+  // Calling validator package to do input validation
+  validateNumber(value)
+  
   const from = await input("Dari satuan asal (C/K/R/F) : ");
   const unit = from.toUpperCase();
   
-  // Calling validator package to do input validation
-  validateNumber(value)
 
   console.log(`\n---- Hasil konversi---- `);
 
@@ -66,8 +67,7 @@ async function main() {
 
   closeInput(`\nProgram selesai.`);
   } catch (err){
-    console.log(err)
-    console.log('-----------------\n')
+    console.log(err.message)
     main()
   }
 }
